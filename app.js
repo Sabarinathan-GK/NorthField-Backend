@@ -5,6 +5,8 @@ const authRoutes = require('./routes/authRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 const productRoutes = require('./routes/productRoutes');
 const errorHandler = require('./middleware/errorHandler');
+const dotenv = require('dotenv');
+dotenv.config();
 
 const app = express();
 
