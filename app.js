@@ -10,17 +10,13 @@ dotenv.config();
 
 const app = express();
 
-const allowedOrigins = (process.env.CLIENT_URL)
-    .split(",")
-    .map((origin) => origin.trim())
-    .filter(Boolean);
+// Configure CORS to permit your Netlify frontend
+const corsOptions = {
+  origin: 'https://northfieldshop.netlify.app',
+  optionsSuccessStatus: 200 // For legacy browser support
+};
 
-app.use(cors({
-    origin(origin, callback){
-        if(!origin || allowedOrigins.includes(origin)) return callback(null, true);
-        return callback(new Error("This origin is not allowed by the CORS policy"));
-    }
-}));
+app.use(cors(corsOptions));
 
 app.use(express.json({ limit : "100kb" }));
 
